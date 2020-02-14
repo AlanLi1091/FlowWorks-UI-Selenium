@@ -2,4 +2,4 @@
 2. User should be able to log into their account using the right Username and Password.
 3. User should be able to access graphing tool.
 4. User should be able to generate a graph.
-5. User should be able to make a correct graph by inspecting certain elements.
+5. User should be able to eusure a graph is correct by inspecting certain elements.
