@@ -19,7 +19,7 @@ class LogIn(unittest.TestCase):
 
         self.driver.implicitly_wait(10)
     
-    def test_get_graphing_tool(self):
+    def test_get_graph(self):
         
         self.driver.get(self.base_url)
 
@@ -59,7 +59,15 @@ class LogIn(unittest.TestCase):
 
         graphing_tool.click()
 
-        self.assertIn("Graphing", self.driver.title)
+        dataLoggerBox = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[1]/div/ul/li[1]/a/i[1])")
+
+        dataLoggerBox.click()
+
+        plot_data = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[2]/div[5]/button[1])")
+
+        plot_data.click()
+
+        self.assertTrue(self.driver.find_elements_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")).is_displayed()
 
     def tearDown(self):
         self.driver.quit()
