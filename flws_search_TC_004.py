@@ -59,15 +59,23 @@ class LogIn(unittest.TestCase):
 
         graphing_tool.click()
 
-        dataLoggerBox = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[1]/div/ul/li[1]/a/i[1])")
+        dataLogger = self.driver.find_element_by_id("598_anchor")
 
-        dataLoggerBox.click()
+        dataLogger.click()
+
+        dataLogger_sub_1 = self.driver.find_element_by_id("598|185_anchor")
+
+        dataLogger_sub_1.click()
+
+        dataLogger_sub_2 = self.driver.find_element_by_id("598|184_anchor")
+        
+        dataLogger_sub_2.click()
 
         plot_data = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[2]/div[5]/button[1])")
 
         plot_data.click()
 
-        self.assertTrue(self.driver.find_elements_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")).is_displayed()
+        self.assertTrue(self.driver.find_element_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")).is_displayed()
 
     def tearDown(self):
         self.driver.quit()
