@@ -75,7 +75,7 @@ class LogIn(unittest.TestCase):
 
         plot_data.click()
 
-        self.assertTrue(self.driver.find_element_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")).is_displayed()
+        self.assertTrue(self.driver.find_element_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)").isDisplayed())
 
     def tearDown(self):
         self.driver.quit()
