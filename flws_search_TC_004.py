@@ -87,4 +87,4 @@ class LogIn(unittest.TestCase):
         self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/allan/Desktop/FWUITest'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/allan/Desktop/FWUITest/Results'))
