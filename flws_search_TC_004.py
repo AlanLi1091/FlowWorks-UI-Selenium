@@ -1,3 +1,5 @@
+# Generate a graph
+
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -75,7 +77,9 @@ class LogIn(unittest.TestCase):
 
         plot_data.click()
 
-        self.assertTrue(self.driver.find_element_by_xpath("(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)").isDisplayed())
+        graph = self.driver.find_element_by_class_name("zc-img")
+
+        self.assertTrue(graph.is_displayed()) 
 
     def tearDown(self):
         self.driver.quit()

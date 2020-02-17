@@ -1,4 +1,4 @@
-# Login into account using username and password
+# Make sure graph elements are correct
 
 import unittest
 from selenium import webdriver
@@ -21,7 +21,7 @@ class LogIn(unittest.TestCase):
 
         self.driver.implicitly_wait(10)
     
-    def test_user_login(self):
+    def test_get_graph(self):
         
         self.driver.get(self.base_url)
 
@@ -53,7 +53,33 @@ class LogIn(unittest.TestCase):
 
         accept.click()
 
-        self.assertIn("Network Map", self.driver.title)
+        initiate_toggle = self.driver.find_element_by_xpath("(/html/body/nav/div/div[2]/ul[1]/li[2]/a)")
+
+        initiate_toggle.click()
+
+        graphing_tool = self.driver.find_element_by_xpath("(/html/body/nav/div/div[2]/ul[1]/li[2]/ul/li[1]/a)")
+
+        graphing_tool.click()
+
+        dataLogger = self.driver.find_element_by_id("598_anchor")
+
+        dataLogger.click()
+
+        dataLogger_sub_1 = self.driver.find_element_by_id("598|185_anchor")
+
+        dataLogger_sub_1.click()
+
+        dataLogger_sub_2 = self.driver.find_element_by_id("598|184_anchor")
+        
+        dataLogger_sub_2.click()
+
+        plot_data = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[2]/div[5]/button[1])")
+
+        plot_data.click()
+
+        graph = self.driver.find_element_by_class_name("zc-img")
+
+        
 
     def tearDown(self):
         self.driver.quit()
