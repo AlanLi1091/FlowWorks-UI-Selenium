@@ -1,6 +1,8 @@
 # Accessing graphing tool
 
 import unittest
+import time
+import HtmlTestRunner
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -67,4 +69,4 @@ class LogIn(unittest.TestCase):
         self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HtmlTestRunner(output='C:/Users/allan/Desktop/FWUITest'))
