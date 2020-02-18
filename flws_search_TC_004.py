@@ -79,9 +79,9 @@ class LogIn(unittest.TestCase):
 
         plot_data.click()
 
-        graph = self.driver.find_element_by_class_name("zc-img")
+        graph_canvas = self.driver.find_element_by_id("graph_canvas")
 
-        self.assertTrue(graph.is_displayed()) 
+        self.assertTrue(graph_canvas.is_displayed()) 
 
     def tearDown(self):
         self.driver.quit()
