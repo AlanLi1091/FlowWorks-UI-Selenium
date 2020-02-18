@@ -3,8 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import BasePageClass
-import locators
-import testdata
+import Locators
+import Testdata
 
 driver = webdriver.Chrome('C:/Users/allan/Desktop/FWUITest/driver/chromedriver.exe')
 
@@ -15,3 +15,4 @@ class HomePage(BasePage):
         self.driver.get(TestData.BASE_URL)
 
     def login(self):
+        self.driver.find_element(*Locators.LOGIN_BUTTON)

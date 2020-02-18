@@ -2,8 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import locators
-import testdata
+import Locators
+import TestData
 
 driver = webdriver.Chrome('C:/Users/allan/Desktop/FWUITest/driver/chromedriver.exe')
 

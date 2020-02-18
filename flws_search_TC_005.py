@@ -6,8 +6,10 @@ import HtmlTestRunner
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-class LogIn(unittest.TestCase):
+class CheckElementsCorrect(unittest.TestCase):
 
     base_url = "https://www.flowworks.com"
 
@@ -17,7 +19,7 @@ class LogIn(unittest.TestCase):
 
     def setUp(self):
 
-        self.driver = webdriver.Chrome(executable_path="C:/Users/allan/Desktop/FWUITest/driver/chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path='C:/Users/allan/Desktop/FWUITest/Flowworks/Drivers/chromedriver.exe')
 
         self.driver.maximize_window()
 
@@ -79,9 +81,11 @@ class LogIn(unittest.TestCase):
 
         plot_data.click()
 
-        graph = self.driver.find_element_by_class_name("zc-img")
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
 
-        
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+
+        self.assertTrue(graph_canvas.is_displayed())
 
     def tearDown(self):
         self.driver.quit()
