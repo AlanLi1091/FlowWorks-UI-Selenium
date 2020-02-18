@@ -14,4 +14,4 @@ class HomePage(BasePage):
         super().__init__(driver)
         self.driver.get(TestData.BASE_URL)
 
-    def login(self)
+    def login(self):

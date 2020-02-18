@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 
 class DisplayGraph(unittest.TestCase):
 
@@ -81,12 +81,9 @@ class DisplayGraph(unittest.TestCase):
 
         plot_data.click()
 
-        self.driver.implicitly_wait(20)
-
-        graph_canvas = self.driver.find_element_by_id("graph-canvas")
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(By.ID,"graph-canvas"))
 
         self.assertTrue(graph_canvas.is_displayed())
-
 
     def tearDown(self):
         self.driver.quit()
