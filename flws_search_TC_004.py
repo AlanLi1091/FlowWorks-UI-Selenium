@@ -6,8 +6,10 @@ import HtmlTestRunner
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
-class LogIn(unittest.TestCase):
+class DisplayGraph(unittest.TestCase):
 
     base_url = "https://www.flowworks.com"
 
@@ -17,7 +19,7 @@ class LogIn(unittest.TestCase):
 
     def setUp(self):
 
-        self.driver = webdriver.Chrome(executable_path="C:/Users/allan/Desktop/FWUITest/driver/chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path='C:/Users/allan/Desktop/FWUITest/Flowworks/Drivers/chromedriver.exe')
 
         self.driver.maximize_window()
 
@@ -79,9 +81,12 @@ class LogIn(unittest.TestCase):
 
         plot_data.click()
 
-        graph_canvas = self.driver.find_element_by_id("graph_canvas")
+        self.driver.implicitly_wait(20)
 
-        self.assertTrue(graph_canvas.is_displayed()) 
+        graph_canvas = self.driver.find_element_by_id("graph-canvas")
+
+        self.assertTrue(graph_canvas.is_displayed())
+
 
     def tearDown(self):
         self.driver.quit()

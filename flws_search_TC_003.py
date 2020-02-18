@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-class LogIn(unittest.TestCase):
+class GraphingToolAccess(unittest.TestCase):
 
     base_url = "https://www.flowworks.com"
 
