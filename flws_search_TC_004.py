@@ -81,7 +81,9 @@ class DisplayGraph(unittest.TestCase):
 
         plot_data.click()
 
-        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(By.ID,"graph-canvas"))
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
+
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
 
         self.assertTrue(graph_canvas.is_displayed())
 
