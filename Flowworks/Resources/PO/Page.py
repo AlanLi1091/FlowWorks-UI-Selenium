@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-import Locators
-import TestData
+from Locators import Locators
+from TestData import TestData
 
 class BasePage():
     """This class is the parent class for all the pages in our application."""
@@ -53,7 +53,7 @@ class HomePage(BasePage):
         self.driver.get(TestData.BASE_URL)
     
     def login(self):
-        self.click(*Locators.LOGIN_BUTTON1)
+        self.click(Locators.LOGIN_BUTTON1)
     
 class LoginPage(BasePage):
     """Login Page of Flowworks"""
