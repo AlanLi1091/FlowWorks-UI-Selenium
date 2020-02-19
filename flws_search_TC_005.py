@@ -3,6 +3,8 @@
 import unittest
 import time
 import HtmlTestRunner
+import urllib3
+import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -83,9 +85,19 @@ class CheckElementsCorrect(unittest.TestCase):
 
         GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
 
-        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
 
-        self.assertTrue(graph_canvas.is_displayed())
+        r1 = requests.get('http://www.flowworks.com/network/graph-new/data/getbatchdata')
+
+        r2 = requests.get('http://www.flowworks.com/network/graph-new/data/getsiteschannelsinfo')
+
+        r3 = requests.get('http://www.flowworks.com/network/graph-new/data/getstatistics')
+
+        self.assertIs(r1.status_code, 200)
+
+        self.assertIs(r2.status_code, 200)
+
+        self.assertIs(r3.status_code, 200)
 
     def tearDown(self):
         self.driver.quit()
