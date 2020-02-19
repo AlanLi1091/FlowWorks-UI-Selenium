@@ -1,4 +1,6 @@
 # bnk
+import urllib3
+
 class TestData():
     CHROME_EXECUTABLE_PATH = 'C:/Users/allan/Desktop/FWUITest/Flowworks/Drivers/chromedriver.exe'
     BASE_URL = "https://www.flowworks.com"
