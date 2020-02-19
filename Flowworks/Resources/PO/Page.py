@@ -1,11 +1,13 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
 import Locators
 import TestData
-
-driver = webdriver.Chrome('C:/Users/allan/Desktop/FWUITest/driver/chromedriver.exe')
 
 class BasePage():
     """This class is the parent class for all the pages in our application."""
@@ -43,3 +45,51 @@ class BasePage():
     def hover_to(self, by_locator):
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
         ActionChains(self.driver).move_to_element(element).perform()
+
+class HomePage(BasePage):
+    """Home Page of FlowWorks"""
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.driver.get(TestData.BASE_URL)
+    
+    def login(self):
+        self.click(*Locators.LOGIN_BUTTON1)
+    
+class LoginPage(BasePage):
+    """Login Page of Flowworks"""
+    def __init__(self, driver):
+        super().__init__(driver)
+    
+    def login_into_page(self):
+        self.enter_text(Locators.INPUT_USERNAME_BOX, TestData.USERNAME)
+        self.enter_text(Locators.INPUT_PASSWORD_BOX, TestData.PASSWORD)
+        self.click(Locators.LOGIN_BUTTON2)
+
+class AcknowledgementPage(BasePage):
+    """Acknowledgement Page after Login Page"""
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    def acknowledgement(self):
+        self.click(Locators.AGREED_BOX)
+        self.click(Locators.CONTINUE_BUTTON)
+
+class NetworkMapPage(BasePage):
+    """This is the network map page after the acknowledgement page"""
+    def __init__ (self, driver):
+        super().__init__(driver)
+    
+    def graphing_tool_access(self):
+        self.click(Locators.GRAPH_TOGGLE)
+        self.click(Locators.GRAPHING_TOOL)
+
+class GeneratingGraph(BasePage):
+    """This class allows the automated testing machine to generate the graph"""
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    def generating_graph(self):
+        self.click(Locators.DC_CA)
+        self.click(Locators.DC_CAT)
+        self.click(Locators.DC_CAWS)
+        self.click(Locators.PLOT_BTN)
