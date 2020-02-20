@@ -2,7 +2,9 @@ import unittest
 import HtmlTestRunner
 from selenium import webdriver
 
-import os, sys, inspect
+import os
+import sys
+import inspect
 # fetch path to the directory in which current file is, from the root directory or C:\ (or whatever driver number it is)
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 # extract the path to parent directory
