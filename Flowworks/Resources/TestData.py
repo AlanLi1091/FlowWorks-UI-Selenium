@@ -7,4 +7,6 @@ class TestData():
     USERNAME = 'alanli'
     PASSWORD = "DC9kt10&2A8#"
     HOME_PAGE_TITLE = "flowworks.com"
+    NETWORK_MAP_TITLE = "Network Map"
+    GRAPHING_TITLE = "Graphing"
     
