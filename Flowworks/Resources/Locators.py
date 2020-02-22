@@ -19,3 +19,4 @@ class Locators():
     DC_CAT=(By.XPATH, "//*[@id='598|185_anchor']")
     DC_CAWS=(By.XPATH, "//*[@id='598|184_anchor']")
     PLOT_BTN=(By.ID, "btnPlot")
+    GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
