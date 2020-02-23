@@ -6,7 +6,7 @@ class TestData():
     BASE_URL = "https://www.flowworks.com"
     USERNAME = 'alanli'
     PASSWORD = "DC9kt10&2A8#"
-    HOME_PAGE_TITLE = "flowworks.com"
+    HOME_PAGE_TITLE = "FlowWorks"
     NETWORK_MAP_TITLE = "Network Map"
     GRAPHING_TITLE = "Graphing"
     
