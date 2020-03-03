@@ -90,6 +90,9 @@ class NetworkMapPage(BasePage):
     def graphing_tool_access(self):
         self.click(Locators.GRAPH_TOGGLE)
         self.click(Locators.GRAPHING_TOOL)
+    
+    def network_map_access(self):
+        self.click(Locators.DC_MAP)
 
 class GeneratingGraphPage(BasePage):
     """This class allows the automated testing machine to generate the graph"""
@@ -101,3 +104,7 @@ class GeneratingGraphPage(BasePage):
         self.click(Locators.DC_CAT)
         self.click(Locators.DC_CAWS)
         self.click(Locators.PLOT_BTN)
+
+    def return_to_network_map(self):
+        self.click(Locators.MONITOR_TOGGLE)
+        self.click(Locators.NETWORK_MAP)

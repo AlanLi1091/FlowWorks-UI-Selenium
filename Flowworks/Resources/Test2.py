@@ -50,6 +50,11 @@ class Test_FLWS_Search(Test_FLWS_Search_Base):
         self.generatingGraphPage.generating_graph()
         graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(Locators.GRAPH_CANVAS_LOCATOR))
         self.assertTrue(graph_canvas.is_displayed())
+        self.generatingGraphPage.return_to_network_map()
+        self.networkMapPage = NetworkMapPage(self.generatingGraphPage.driver)
+        self.networkMapPage.network_map_access()
+        map_panel = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(Locators.MAP_PANEL_LOCATOR))
+        self.assertTrue(map_panel.is_displayed())
     
 if __name__ == "__main__":
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/allan/Desktop/FWUITest/Results'))    
