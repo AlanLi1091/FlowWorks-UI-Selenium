@@ -22,3 +22,4 @@ class Locators():
     #For showing site map
     DC_MAP=(By.XPATH, "//*[@id='598_anchor']")
     MAP_PANEL_LOCATOR=(By.ID, "map-panel")
+    
