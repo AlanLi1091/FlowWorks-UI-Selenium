@@ -54,3 +54,48 @@ class BasePage():
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
         ActionChains(self.driver).move_to_element(element).perform()
 
+class LoginPage(BasePage):
+    """Login Page of Flowworks"""
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.driver.get(TestData.BASE_URL)
+    
+    def login_into_page(self):
+        self.enter_text(Locators.INPUT_USERNAME_BOX, TestData.USERNAME)
+        self.enter_text(Locators.INPUT_PASSWORD_BOX, TestData.PASSWORD)
+        self.click(Locators.LOGIN_BUTTON)
+
+class AcknowledgementPage(BasePage):
+    """Acknowledgement Page after Login Page"""
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    def acknowledgement(self):
+        self.click(Locators.AGREED_BOX)
+        self.click(Locators.CONTINUE_BUTTON)
+
+class NetworkMapPage(BasePage):
+    """This is the network map page after the acknowledgement page"""
+    def __init__ (self, driver):
+        super().__init__(driver)
+    
+    def graphing_tool_access(self):
+        self.click(Locators.GRAPH_TOGGLE)
+        self.click(Locators.GRAPHING_TOOL)
+    
+    def site_access(self):
+        for SITE in Locators.SITES:
+            self.click(SITE)
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(Locators.GM_LOCATOR))
+
+
+class GeneratingGraphPage(BasePage):
+    """This class allows the automated testing machine to generate the graph"""
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    def generating_graph(self):
+        self.click(Locators.DC_CA)
+        self.click(Locators.DC_CAT)
+        self.click(Locators.DC_CAWS)
+        self.click(Locators.PLOT_BTN)

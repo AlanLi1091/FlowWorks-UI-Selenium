@@ -20,6 +20,5 @@ class Locators():
     MONITOR_TOGGLE=(By.XPATH, "//*[@id='primary-navbar-collapse']/ul[1]/li[1]/a")
     NETWORK_MAP=(By.XPATH, "//*[@id='primary-navbar-collapse']/ul[1]/li[1]/ul/li[2]/a")
     #For showing site map
-    DC_MAP=(By.XPATH, "//*[@id='598_anchor']")
-    MAP_PANEL_LOCATOR=(By.ID, "map-panel")
-    
+    SITES=(By.CLASS_NAME, "jstree-anchor")
+    GM_LOCATOR=(By.CLASS_NAME, "gm_style")
