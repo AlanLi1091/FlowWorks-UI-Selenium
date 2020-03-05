@@ -21,7 +21,7 @@ class CheckElementsCorrect(unittest.TestCase):
 
     def setUp(self):
 
-        self.driver = webdriver.Chrome(executable_path='C:/Users/allan/Desktop/FWUITest/Flowworks/Drivers/chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='C:/Users/allan/Desktop/python-tcode/FWUITest/FlowworksBeta/Drivers/chromedriver.exe')
 
         self.driver.maximize_window()
 
