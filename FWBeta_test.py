@@ -61,6 +61,7 @@ class CheckElementsCorrect(unittest.TestCase):
             allSideNodes_ids.append(allSideNodes[i].get_attribute("id"))
         for id in allSideNodes_ids:
             self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(id)))
+            WebDriverWait(self.driver, 2)
             plot_data.click()
             GRAPH_LOCATOR = (By.XPATH, "(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")
             graph = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_LOCATOR))
