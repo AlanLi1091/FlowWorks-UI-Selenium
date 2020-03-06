@@ -43,7 +43,11 @@ class CheckElementsCorrect(unittest.TestCase):
         google_map = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GOOGLE_MAP_LOCATOR))
         for site in sites:
             site.click()
+            time.sleep(0.5)
             self.assertTrue(google_map.is_displayed())
+            PANEL_LOCATOR = (By.XPATH, "(/html/body/section/div/main/div/div/div/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div/div[4]/div/div)")
+            panel = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(PANEL_LOCATOR))
+            self.assertTrue(panel.is_displayed())
             time.sleep(0.4)
         graph = self.driver.find_element_by_xpath("(/html/body/nav/div/div[2]/ul[1]/li[2]/a)")
         graph.click()
