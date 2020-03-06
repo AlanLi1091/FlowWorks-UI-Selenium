@@ -54,18 +54,46 @@ class CheckElementsCorrect(unittest.TestCase):
         date_to = self.driver.find_element_by_id("txtTo")
         date_to.clear()
         date_to.send_keys("2019-12-31 23:59")
-        checkboxes = self.driver.find_element_by_class_name("jstree-icon jstree-checkbox")
+        allSideNodes = self.driver.find_elements_by_css_selector("#site-tree li[rel=site]")
         plot_data = self.driver.find_element_by_xpath("(/html/body/section/div/aside/div/div[2]/div[5]/button[1])")
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")       
+        allSideNodes_ids = []
+        for i in range(0, len(allSideNodes)):
+            allSideNodes_ids.append(allSideNodes[i].get_attribute("id"))
+        self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(allSideNodes_ids[0])))
+        plot_data.click()
         GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
-        graph_canvas = WebDriverWait(self.driver, 120).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
-        for checkbox in checkboxes:
-            checkbox.click()
-            plot_data.click()
-            self.assertTrue(graph_canvas.is_displayed())
-            checkbox.click
-
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        self.assertTrue(graph_canvas.is_displayed())
+        self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(allSideNodes_ids[0])))
+        self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(allSideNodes_ids[1])))
+        plot_data.click()
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        self.assertTrue(graph_canvas.is_displayed())
+        self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(allSideNodes_ids[1])))
+        self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(allSideNodes_ids[2])))
+        plot_data.click()
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        self.assertTrue(graph_canvas.is_displayed())
+        self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(allSideNodes_ids[2])))
+        self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(allSideNodes_ids[3])))
+        plot_data.click()
+        GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
+        graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        self.assertTrue(graph_canvas.is_displayed())
+        self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(allSideNodes_ids[3])))
+        # for id in allSideNodes_ids:
+        #     self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(id)))
+        #     plot_data.click()
+        #     GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
+        #     graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
+        #     self.assertTrue(graph_canvas.is_displayed())
+        #     self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(id)))
+        
     def tearDown(self):
         self.driver.quit()
 
 if __name__=="__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/allan/Desktop/FWUITest/Results'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/allan/Desktop/python-tcode/FWUITest/Results'))
