@@ -36,4 +36,4 @@ graphing_tool = driver.find_element_by_xpath("(/html/body/nav/div/div[2]/ul[1]/l
 graphing_tool.click()
 
 allSideNodes = driver.find_elements_by_css_selector("#site-tree li[rel=site]")
-print(allSideNodes[0].get_attribute("id"))
+id1 = allSideNodes[0].get_attribute("id")
