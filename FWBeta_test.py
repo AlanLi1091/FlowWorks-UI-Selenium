@@ -62,9 +62,9 @@ class CheckElementsCorrect(unittest.TestCase):
         for id in allSideNodes_ids:
             self.driver.execute_script("$('#site-tree').jstree('check_node',{})".format(str(id)))
             plot_data.click()
-            GRAPH_CANVAS_LOCATOR = (By.ID, "graph-canvas")
-            graph_canvas = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_CANVAS_LOCATOR))
-            self.assertTrue(graph_canvas.is_displayed())
+            GRAPH_LOCATOR = (By.XPATH, "(/html/body/section/div/main/div[2]/div/div[2]/div/div/img)")
+            graph = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(GRAPH_LOCATOR))
+            self.assertTrue(graph.is_displayed())
             self.driver.execute_script("$('#site-tree').jstree('uncheck_node',{})".format(str(id)))
         
     def tearDown(self):
